@@ -16,3 +16,10 @@ findKth(Count,[_|T],X):-
 	CountOneLess is Count - 1,
 	findKth(CountOneLess,T,X).
 %?- findKth(3,[1,2,3,4,5],X).
+
+%Find the number of elements of list.
+findNumberOfElements([],0):-!.
+findNumberOfElements([_|T],CountPlusOne):-
+	findNumberOfElements(T,Count),
+	CountPlusOne is Count + 1.
+%?- findNumberOfElements([1,2,3,4,5,6],X).
