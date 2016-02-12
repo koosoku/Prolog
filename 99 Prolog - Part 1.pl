@@ -23,3 +23,11 @@ findNumberOfElements([_|T],CountPlusOne):-
 	findNumberOfElements(T,Count),
 	CountPlusOne is Count + 1.
 %?- findNumberOfElements([1,2,3,4,5,6],X).
+
+%Reverse the list.
+reverseList(List,ReversedList):-
+	reverseList(List,[],ReversedList).
+reverseList([],ReversedList,ReversedList):-!.
+reverseList([H|T],ReversedListTemp,ReversedList):-
+	reverseList(T,[H|ReversedListTemp],ReversedList).
+%?- reverseList([1,2,3,4,5],X).	
