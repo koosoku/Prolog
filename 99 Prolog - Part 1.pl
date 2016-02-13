@@ -31,3 +31,11 @@ reverseList([],ReversedList,ReversedList):-!.
 reverseList([H|T],ReversedListTemp,ReversedList):-
 	reverseList(T,[H|ReversedListTemp],ReversedList).
 %?- reverseList([1,2,3,4,5],X).	
+
+%Find if list the is a palindrome
+isPalindrome(List):-
+	reverseList(List,ReversedList),
+	isPalindrome(List,ReversedList).
+isPalindrome([],[]):-!.
+isPalindrome([H|List],[H|ReversedList]):-
+	isPalindrome(List,ReversedList).
