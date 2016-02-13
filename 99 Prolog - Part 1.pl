@@ -51,4 +51,14 @@ flatten([[]|T],X):-
 	flatten(T,X),!.
 flatten([H|T],[H|X]):-
 	flatten(T,X).
-%% ?- flatten([[[a,[b]],c,[]]],X).
+%%?- flatten([[[a,[b]],c,[]]],X).
+
+%Eliminate consecutive duplicates of list elements
+compress([Head|List],[Head|X]):-
+	compress(List,Head,X).
+compress([],_,[]):-!.
+compress([Head|List],Head,X):-
+	!,compress(List,Head,X).
+compress([Head|List],_LastElement,[Head|X]):-
+	compress(List,Head,X).
+%?-compress([a,a,b,b,a,c],X).
