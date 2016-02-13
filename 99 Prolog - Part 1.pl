@@ -39,3 +39,16 @@ isPalindrome(List):-
 isPalindrome([],[]):-!.
 isPalindrome([H|List],[H|ReversedList]):-
 	isPalindrome(List,ReversedList).
+%?- isPalindrome([1,2,3,2,1]).
+
+%Flatten nested list structures
+%ie: flatten([a[b[c,d]]],X)
+%X = [a,b,c,d]
+flatten([],[]):-!.
+flatten([[NestedHead|NestedTail]|T],X):-
+	!,flatten([NestedHead,NestedTail|T],X).
+flatten([[]|T],X):-
+	flatten(T,X),!.
+flatten([H|T],[H|X]):-
+	flatten(T,X).
+%% ?- flatten([[[a,[b]],c,[]]],X).
